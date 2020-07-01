@@ -76,5 +76,14 @@ $(document).ready(function () {
     alphaDust.initPostHeader();
     alphaDust.initMenu();
     alphaDust.displayArchives();
-    document.getElementById('audioTag').play();
+    var audio = document.querySelector('#audioTag');
+    function PlayAudio() {
+        audio.load(); // iOS 9  需要load一下, 否则直接play无效
+        audio.play(); // iOS 7/8 需要play一下
+    }
+    audio.addEventListener('play', function() {
+        // 当 audio 能够播放后, 移除这个事件
+        window.removeEventListener('touchstart', PlayAudio, false);
+      }, false);
+    window.addEventListener('touchstart', PlayAudio, false);
 });
