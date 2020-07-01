@@ -76,4 +76,5 @@ $(document).ready(function () {
     alphaDust.initPostHeader();
     alphaDust.initMenu();
     alphaDust.displayArchives();
+    document.getElementById('audioTag').play();
 });
